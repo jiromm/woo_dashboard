@@ -1,0 +1,34 @@
+@font-face{
+	font-family: 'Dejavu Sans Condensed';
+	src: url('../fonts/dejavu-sans/dejavusanscondensed.eot');
+	src: url('../fonts/dejavu-sans/dejavusanscondensed.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/dejavu-sans/dejavusanscondensed.woff') format('woff'),
+	url('../fonts/dejavu-sans/dejavusanscondensed.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal
+}
+@font-face{
+	font-family:'Dejavu Sans Condensed';
+	src:url('../fonts/dejavu-sans/dejavusanscondensed-bold.eot');
+	src:url('../fonts/dejavu-sans/dejavusanscondensed-bold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/dejavu-sans/dejavusanscondensed-bold.woff') format('woff'),
+	url('../fonts/dejavu-sans/dejavusanscondensed-bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal
+}
+* {
+	font-family: "Dejavu Sans Condensed", 'Arial AMU', Silfaen, sans-serif;
+}
+.lh-100 {
+	line-height: 100%;
+}
+.ellipsis {
+	width: 200px;
+	overflow: hidden;
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.hidden {
+	display: none !important;
+}
