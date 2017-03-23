@@ -1,15 +1,16 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/config.php';
 
 use Automattic\WooCommerce\Client;
 use Automattic\WooCommerce\HttpClient\HttpClientException;
 
 try {
     $woocommerce = new Client(
-        'https://premium.am',
-        'ck_d4985d0911711881bb5bf4b4ea2dcb4e260b589a',
-        'cs_1d74836723e100cbd67aa2137653bc125b1ba4eb',
+        WOO_HOST,
+        WOO_KEY,
+        WOO_SECRET,
         [
             'wp_api' => true,
             'version' => 'wc/v1',
@@ -18,7 +19,7 @@ try {
     );
     $result = $woocommerce->get('orders', [
         'status' => 'any',
-        'per_page' => 10,
+        'per_page' => 20,
         'dp' => 0,
     ]);
 } catch (HttpClientException $e) {
