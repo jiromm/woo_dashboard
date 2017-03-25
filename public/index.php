@@ -107,8 +107,8 @@ $v = uniqid();
 
                         <?php if ($order['status'] == 'processing') { ?>
                         <div class="actions mt-2">
-                            <button class="btn btn-sm btn-success order-action pointer" data-action="complete">Complete</button>
-                            <button class="btn btn-sm btn-danger order-action pointer" data-action="cancel">Cancel</button>
+                            <button class="btn btn-sm btn-success order-action pointer" data-action="completed">Complete</button>
+                            <button class="btn btn-sm btn-danger order-action pointer" data-action="cancelled">Cancel</button>
                         </div>
                         <div class="alert alert-success hidden-xs-up mt-2" role="alert">
                             <button type="button" class="close pointer" aria-label="Close">

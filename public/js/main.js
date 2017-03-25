@@ -77,8 +77,8 @@ $(function() {
 
 				badge
 					.removeClass('badge-warning')
-					.addClass('badge-' + (status == 'complete' ? 'success' : 'danger'))
-					.text(status == 'complete' ? 'completed' : 'cancelled');
+					.addClass('badge-' + (status == 'completed' ? 'success' : 'danger'))
+					.text(status);
 
 				order.find('.secondary-record').toggleClass('hidden-xs-up')
 			} else {

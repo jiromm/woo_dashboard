@@ -22,10 +22,8 @@ try {
      * @var Automattic\WooCommerce\Client $woocommerce
      */
     $woocommerce = include __DIR__ . '/connection.php';
-//    $result = $woocommerce->put('orders', [
+//    $result = $woocommerce->put('orders/' . $_POST['status'], [
 //        'status' => 'any',
-//        'per_page' => 20,
-//        'dp' => 0,
 //    ]);
 
     $result = [
