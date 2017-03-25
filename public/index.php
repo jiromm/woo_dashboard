@@ -56,10 +56,12 @@ $v = uniqid();
     <title>Premium Dashboard</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0">
 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css?v=<?= $v ?>">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.1.1.slim.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js?v=<?= $v ?>"></script>
 </head>
 
@@ -88,7 +90,7 @@ $v = uniqid();
                         </small>
                         <strong><?= $order['total'] . ' ' . $order['currency'] ?></strong>
                     </div>
-                    <div class="mt-2 w-100 hidden-xs-down secondary-record flex-columns">
+                    <div class="mt-2 w-100 hidden-xs-up secondary-record flex-columns">
                         <?php foreach ($order['line_items'] as $item) { ?>
                         <div class="d-flex w-100 justify-content-between">
                             <small class="ellipsis">
@@ -99,10 +101,10 @@ $v = uniqid();
                         </div>
                         <?php } ?>
                         <div class="actions mt-2">
-                            <button class="btn btn-sm btn-success complete" data-action="complete">Complete</button>
-                            <button class="btn btn-sm btn-danger cancel" data-action="cancel">Cancel</button>
+                            <button class="btn btn-sm btn-success order-action complete" data-action="complete">Complete</button>
+                            <button class="btn btn-sm btn-danger order-action cancel" data-action="cancel">Cancel</button>
                         </div>
-                        <div class="alert alert-dismissible alert-success mt-2" role="alert">
+                        <div class="alert alert-dismissible alert-success hidden-xs-up mt-2" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
