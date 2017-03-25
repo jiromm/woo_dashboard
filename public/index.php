@@ -89,6 +89,22 @@ $v = uniqid();
                         </div>
                         <?php } ?>
 
+                        <div class="d-flex w-100 justify-content-between text-primary">
+                            <small class="ellipsis">
+                                Առաքում
+                            </small>
+                            <small><strong><?= $order['shipping_total'] . ' ' . $order['currency'] ?></strong></small>
+                        </div>
+
+                        <?php if ($order['discount_total']) { ?>
+                        <div class="d-flex w-100 justify-content-between text-info">
+                            <small class="ellipsis">
+                                Զեղչ
+                            </small>
+                            <small><strong>-<?= abs($order['discount_total']) . ' ' . $order['currency'] ?></strong></small>
+                        </div>
+                        <?php } ?>
+
                         <?php if ($order['status'] == 'processing') { ?>
                         <div class="actions mt-2">
                             <button class="btn btn-sm btn-success order-action pointer" data-action="complete">Complete</button>
