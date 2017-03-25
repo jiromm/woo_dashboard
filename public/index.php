@@ -41,7 +41,7 @@ function getStatusClass($status) {
     ];
 
     if (array_key_exists($status, $statusMap) && !empty($statusMap[$status])) {
-        return 'list-group-item-' . $statusMap[$status];
+        return 'badge-' . $statusMap[$status];
     }
 
     return '';
@@ -81,9 +81,12 @@ $v = uniqid();
                 foreach ($result as $i => $order) {
 //                    echo var_dump($order['line_items']);exit;
                 ?>
-                <a href="#" class="list-group-item list-group-item-action <?= getStatusClass($order['status']) ?>">
+                <div class="list-group-item list-group-item-action order">
                     <div class="d-flex w-100 justify-content-between primary-record">
-                        <strong>#<?= $order['number'] ?></strong>
+                        <strong>
+                            #<?= $order['number'] ?>
+                            <span class="badge badge-pill badge-default align-middle <?= getStatusClass($order['status']) ?>"><?= $order['status'] ?></span>
+                        </strong>
                         <small class="muted lh-100">
                             <?= date('Y-m-d', strtotime($order['date_created'])) ?><br>
                             <?= count($order['line_items']) ?> item(s)
@@ -100,20 +103,23 @@ $v = uniqid();
                             <small><strong><?= $item['total'] . ' ' . $order['currency'] ?></strong></small>
                         </div>
                         <?php } ?>
+
+                        <?php if ($order['status'] == 'processing') { ?>
                         <div class="actions mt-2">
                             <button class="btn btn-sm btn-success order-action complete" data-action="complete">Complete</button>
                             <button class="btn btn-sm btn-danger order-action cancel" data-action="cancel">Cancel</button>
                         </div>
-                        <div class="alert alert-dismissible alert-success hidden-xs-up mt-2" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <div class="alert alert-success hidden-xs-up mt-2" role="alert">
+                            <button type="button" class="close" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
 
-                            <p><strong>You are about to <span class="action-name">Cancel</span> an order</strong></p>
-                            <p>Are you sure? <button class="btn btn-sm btn-primary">Yes</button></p>
+                            <p>You are about to <span class="action-name">Cancel</span> an order <strong>Are you sure?</strong></p>
+                            <button class="btn btn-sm action-name-btn apply-action">Yes</button>
                         </div>
+                        <?php } ?>
                     </div>
-                </a>
+                </div>
                 <?php } ?>
             </div>
         </div>

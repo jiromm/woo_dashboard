@@ -32,3 +32,7 @@
 .hidden {
 	display: none !important;
 }
+.order .badge {
+	font-weight: normal;
+	font-size: 70%;
+}
