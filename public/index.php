@@ -1,32 +1,17 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/config.php';
-
-use Automattic\WooCommerce\Client;
 use Automattic\WooCommerce\HttpClient\HttpClientException;
 
 try {
-    $woocommerce = new Client(
-        WOO_HOST,
-        WOO_KEY,
-        WOO_SECRET,
-        [
-            'wp_api' => true,
-            'version' => 'wc/v1',
-            'verify_ssl' => false,
-        ]
-    );
+    $woocommerce = include __DIR__ . '/connection.php';
     $result = $woocommerce->get('orders', [
         'status' => 'any',
         'per_page' => 20,
         'dp' => 0,
     ]);
 } catch (HttpClientException $e) {
-    echo $e->getMessage() . PHP_EOL;
-    echo $e->getRequest() . PHP_EOL;
-    echo $e->getResponse() . PHP_EOL;
-    $result = [];
+    echo $e->getMessage();
+    exit;
 }
 
 function getStatusClass($status) {
@@ -59,7 +44,7 @@ $v = uniqid();
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css?v=<?= $v ?>">
 
-    <script src="js/jquery-3.1.1.slim.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/tether.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js?v=<?= $v ?>"></script>
@@ -81,11 +66,11 @@ $v = uniqid();
                 foreach ($result as $i => $order) {
 //                    echo var_dump($order['line_items']);exit;
                 ?>
-                <div class="list-group-item list-group-item-action order">
+                <div class="list-group-item list-group-item-action pointer order" data-order-id="<?= $order['id'] ?>">
                     <div class="d-flex w-100 justify-content-between primary-record">
                         <strong>
                             #<?= $order['number'] ?>
-                            <span class="badge badge-pill badge-default align-middle <?= getStatusClass($order['status']) ?>"><?= $order['status'] ?></span>
+                            <span class="badge badge-pill align-middle <?= getStatusClass($order['status']) ?>"><?= $order['status'] ?></span>
                         </strong>
                         <small class="muted lh-100">
                             <?= date('Y-m-d', strtotime($order['date_created'])) ?><br>
@@ -93,7 +78,7 @@ $v = uniqid();
                         </small>
                         <strong><?= $order['total'] . ' ' . $order['currency'] ?></strong>
                     </div>
-                    <div class="mt-2 w-100 hidden-xs-up secondary-record flex-columns">
+                    <div class="mt-2 w-100 hidden-xs-up secondary-record non-pointer flex-columns">
                         <?php foreach ($order['line_items'] as $item) { ?>
                         <div class="d-flex w-100 justify-content-between">
                             <small class="ellipsis">
@@ -106,16 +91,16 @@ $v = uniqid();
 
                         <?php if ($order['status'] == 'processing') { ?>
                         <div class="actions mt-2">
-                            <button class="btn btn-sm btn-success order-action complete" data-action="complete">Complete</button>
-                            <button class="btn btn-sm btn-danger order-action cancel" data-action="cancel">Cancel</button>
+                            <button class="btn btn-sm btn-success order-action pointer" data-action="complete">Complete</button>
+                            <button class="btn btn-sm btn-danger order-action pointer" data-action="cancel">Cancel</button>
                         </div>
                         <div class="alert alert-success hidden-xs-up mt-2" role="alert">
-                            <button type="button" class="close" aria-label="Close">
+                            <button type="button" class="close pointer" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
 
-                            <p>You are about to <span class="action-name">Cancel</span> an order <strong>Are you sure?</strong></p>
-                            <button class="btn btn-sm action-name-btn apply-action">Yes</button>
+                            <p>You are about to <span class="action-name">Cancel</span> an order.<strong> Are you sure?</strong></p>
+                            <button class="btn btn-sm action-name-btn pointer apply-action" data-status=""></button>
                         </div>
                         <?php } ?>
                     </div>

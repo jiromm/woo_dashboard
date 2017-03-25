@@ -36,3 +36,15 @@
 	font-weight: normal;
 	font-size: 70%;
 }
+.order * {
+	-webkit-transition: all linear 1s;
+	-moz-transition: all linear 1s;
+	-o-transition: all linear 1s;
+	transition: all linear 1s;
+}
+.pointer {
+	cursor: pointer;
+}
+.non-pointer {
+	cursor: default;
+}
