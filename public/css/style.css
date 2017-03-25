@@ -1,18 +1,18 @@
 @font-face{
 	font-family: 'Dejavu Sans Condensed';
-	src: url('../fonts/dejavu-sans/dejavusanscondensed.eot');
-	src: url('../fonts/dejavu-sans/dejavusanscondensed.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/dejavu-sans/dejavusanscondensed.woff') format('woff'),
-	url('../fonts/dejavu-sans/dejavusanscondensed.ttf') format('truetype');
+	src: url('../fonts/dejavusanscondensed.eot');
+	src: url('../fonts/dejavusanscondensed.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/dejavusanscondensed.woff') format('woff'),
+	url('../fonts/dejavusanscondensed.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal
 }
 @font-face{
 	font-family:'Dejavu Sans Condensed';
-	src:url('../fonts/dejavu-sans/dejavusanscondensed-bold.eot');
-	src:url('../fonts/dejavu-sans/dejavusanscondensed-bold.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/dejavu-sans/dejavusanscondensed-bold.woff') format('woff'),
-	url('../fonts/dejavu-sans/dejavusanscondensed-bold.ttf') format('truetype');
+	src:url('../fonts/dejavusanscondensed-bold.eot');
+	src:url('../fonts/dejavusanscondensed-bold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/dejavusanscondensed-bold.woff') format('woff'),
+	url('../fonts/dejavusanscondensed-bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal
 }
