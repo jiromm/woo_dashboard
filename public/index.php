@@ -2,10 +2,27 @@
 
 use Automattic\WooCommerce\HttpClient\HttpClientException;
 
+$navStatusMap = [
+    'any' => 'primary',
+    'processing' => 'warning',
+    'completed' => 'success',
+    'cancelled' => 'danger',
+];
+
+if (empty($_GET['status'])) {
+    $status = 'any';
+} else {
+    if (!array_key_exists($_GET['status'], $navStatusMap)) {
+        $status = 'any';
+    } else {
+        $status = $_GET['status'];
+    }
+}
+
 try {
     $woocommerce = include __DIR__ . '/connection.php';
     $result = $woocommerce->get('orders', [
-        'status' => 'any',
+        'status' => $status,
         'per_page' => 20,
         'dp' => 0,
     ]);
@@ -60,10 +77,15 @@ $v = uniqid();
     </div>
     <div class="row mb-2">
         <div class="col-sm-12 text-center">
-            <a href="#" class="btn btn-sm btn-outline-primary">All</a>
-            <a href="#" class="btn btn-sm btn-outline-warning">Processing</a>
-            <a href="#" class="btn btn-sm btn-outline-success">Completed</a>
-            <a href="#" class="btn btn-sm btn-outline-danger">Cancelled</a>
+            <?php
+                foreach ($navStatusMap as $navStatus => $class) {
+                    $active = '';
+                    if ($navStatus == $status) {
+                        $active = 'active';
+                    }
+            ?>
+            <a href="?status=<?= $navStatus ?>" class="btn btn-sm btn-outline-<?= $class ?> <?= $active ?>"><?= ucfirst($navStatus) ?></a>
+            <?php } ?>
         </div>
     </div>
     <div class="row">
