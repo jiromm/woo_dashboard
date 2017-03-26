@@ -23,7 +23,7 @@ try {
     $woocommerce = include __DIR__ . '/connection.php';
     $result = $woocommerce->get('orders', [
         'status' => $status,
-        'per_page' => 20,
+        'per_page' => 10,
         'dp' => 0,
     ]);
 } catch (HttpClientException $e) {

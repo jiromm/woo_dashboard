@@ -14,7 +14,7 @@ try {
         throw new \Exception('Bad order id');
     }
 
-    if (empty($_POST['status']) || !in_array($_POST['status'], ['complete', 'cancel'])) {
+    if (empty($_POST['status']) || !in_array($_POST['status'], ['completed', 'cancelled'])) {
         throw new \Exception('Bad status');
     }
 

@@ -19,7 +19,7 @@ $(function() {
 			alert = order.find('.alert'),
 			actionBtn = order.find('.apply-action'),
 			actionClass = (
-				action == 'cancel'
+				action == 'cancelled'
 					? 'danger'
 					: 'success'
 			);
@@ -31,6 +31,8 @@ $(function() {
 
 		alert
 			.removeClass('hidden-xs-up')
+			.removeClass('alert-success')
+			.removeClass('alert-danger')
 			.addClass('alert-' + actionClass);
 		alert.find('.action-name').text(
 			action.ucfirst()
