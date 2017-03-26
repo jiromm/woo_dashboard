@@ -58,6 +58,14 @@ $v = uniqid();
             <div class="lead text-primary text-center m-2">Premium Dashboard</div>
         </div>
     </div>
+    <div class="row mb-2">
+        <div class="col-sm-12 text-center">
+            <a href="#" class="btn btn-sm btn-outline-primary">All</a>
+            <a href="#" class="btn btn-sm btn-outline-warning">Processing</a>
+            <a href="#" class="btn btn-sm btn-outline-success">Completed</a>
+            <a href="#" class="btn btn-sm btn-outline-danger">Cancelled</a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="list-group">
