@@ -60,10 +60,15 @@ $(function() {
 	$('.apply-action').click(function (e) {
 		e.preventDefault();
 
-		var order = $(this).closest('.order'),
+		var btn = $(this),
+			order = btn.closest('.order'),
 			badge = order.find('.badge'),
 			orderId = order.data('order-id'),
-			status = $(this).attr('data-status');
+			status = btn.attr('data-status');
+
+		btn
+			.prop('disabled', true)
+			.text('Loading...');
 
 		$.ajax({
 			method: 'POST',

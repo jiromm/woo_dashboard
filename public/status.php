@@ -22,9 +22,9 @@ try {
      * @var Automattic\WooCommerce\Client $woocommerce
      */
     $woocommerce = include __DIR__ . '/connection.php';
-//    $result = $woocommerce->put('orders/' . $_POST['status'], [
-//        'status' => 'any',
-//    ]);
+    $result = $woocommerce->put('orders/' . $_POST['order_id'], [
+        'status' => $_POST['status'],
+    ]);
 
     $result = [
         'status' => 'success',
